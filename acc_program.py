@@ -1,3 +1,6 @@
+#Acct. Program prototype
+#By: Andrew Mohnkern
+
 #Class def
 class FinancialAccount:
 
