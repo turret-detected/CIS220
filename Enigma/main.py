@@ -40,4 +40,3 @@ while returntomain == True:
 		print("Invalid Command")
 		returntomain = True
 
-#TODO Make a bool state for completed menu or not
