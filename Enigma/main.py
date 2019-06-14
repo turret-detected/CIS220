@@ -7,9 +7,11 @@
 
 
 import menu
+import fileprovider
 
 returntomain = True
 userin = ""
+
 
 while returntomain == True:
 	returntomain = False
@@ -30,8 +32,9 @@ while returntomain == True:
 		returntomain = True
 		
 	elif userin == "K":
-		print("NYI")
-		returntomain = True
+		keyFile = fileprovider.getKeyFilePath()
+		print(keyFile)
+		print(fileprovider.convertCSVToDict(keyFile))
 		
 	elif userin == "Q":
 		print("Goodbye")
