@@ -6,7 +6,7 @@
 #Desc: Initial encryption functionality
 import plugboard
 plug = plugboard.getPlugboard()
-plug.update({" ":" "})
+plug.update({" ":" ","\n":"\n"})
    
 def translate(phrase):
     translation = ""
