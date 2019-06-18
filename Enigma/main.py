@@ -8,6 +8,7 @@
 
 import menu
 import fileprovider
+import plugboard
 
 returntomain = True
 userin = ""
@@ -24,17 +25,17 @@ while returntomain == True:
 		returntomain = True
 		
 	elif userin == "E":
-		print("NYI")
-		returntomain = True
+		fileToEncrypt = fileprovider.getTextFilePath()
+		
 		
 	elif userin == "D":
 		print("NYI")
 		returntomain = True
 		
-	elif userin == "K":
-		keyFile = fileprovider.getKeyFilePath()
-		print(keyFile)
-		print(fileprovider.convertCSVToDict(keyFile))
+	#elif userin == "K":
+	#	keyFile = fileprovider.getKeyFilePath()
+	#	print(keyFile)
+	#	print(fileprovider.convertCSVToDict(keyFile))
 		
 	elif userin == "Q":
 		print("Goodbye")
