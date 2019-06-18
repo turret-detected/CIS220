@@ -40,3 +40,17 @@ def convertFileToText(filepath):
 	file.close()
 	return contents
 	
+def fixText(text):
+	newText = ""
+	for letter in text:
+		if letter == ",":
+			letter = "/"
+		elif letter == "\'":
+			letter = "#"
+		newText += letter
+		
+	return newText 
+		
+			
+		
+	

@@ -28,10 +28,12 @@ while returntomain == True:
 	if userin == "E":
 		fileToEncrypt = fileprovider.getTextFilePath()
 		fileText = fileprovider.convertFileToText(fileToEncrypt)
-		#print(fileText)
+		fixedText = fileprovider.fixText(fileText)
 		
-		newText = plug1.translate(fileText)
+		newText = plug1.translate(fixedText)
+		print("Output: \n")
 		print(newText)
+		print("\n")
 		
 		print("Returning the main menu")
 		returntomain = True
