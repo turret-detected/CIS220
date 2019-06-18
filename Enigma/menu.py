@@ -46,7 +46,7 @@ def welcome_menu():
 	print("                                                                               ")
 	print("                                                                               ")
 	print("                Command List:                                                  ")
-	print("                K: View or set keys                                            ")
+	print("                                                                               ")
 	print("                E: Encrypt a message                                       	  ")
 	print("                D: Decrypt a message                                           ")
 	print("                Q: Quit                                                        ")

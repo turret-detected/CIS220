@@ -1,4 +1,4 @@
-#Author: Andrew Mohnkern
+#Author: Andrew Mohnkern, Zach Page
 #Date: 6/14/19
 #Class: CIS 220
 #Project: Enigma Encryptor
@@ -33,4 +33,10 @@ def convertCSVToDict(filepath):
 		#print(keyDict)
 		
 	return keyDict
+	
+def convertFileToText(filepath):
+	file = open(filepath, 'r')
+	contents = file.read()
+	file.close()
+	return contents
 	

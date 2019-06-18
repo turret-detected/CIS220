@@ -19,13 +19,18 @@ while returntomain == True:
 	menu.welcome_menu()
 	userin = input()
 	
-	if userin == "I":
-		menu.instruction_menu()
-		null = input()
-		returntomain = True
+	#if userin == "I":
+	#	menu.instruction_menu()
+	#	null = input()
+	#	returntomain = True
 		
-	elif userin == "E":
+	if userin == "E":
 		fileToEncrypt = fileprovider.getTextFilePath()
+		fileText = fileprovider.convertFileToText(fileToEncrypt)
+		print(fileText)
+		
+		print("Returning the main menu")
+		returntomain = True
 		
 		
 	elif userin == "D":
