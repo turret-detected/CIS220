@@ -8,9 +8,9 @@ import plugboard
 plug = plugboard.getPlugboard()
 plug.update({" ":" ","\n":"\n"})
    
-def translate(phrase):
+def translate(phrase,dictionary):
     translation = ""
     for letter in phrase:
         #print (letter, 'corresponds to', plug[letter])
-        translation += plug[letter]
+        translation += dictionary[letter]
     return translation
