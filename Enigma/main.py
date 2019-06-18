@@ -9,6 +9,7 @@
 import menu
 import fileprovider
 import plugboard
+import plug1
 
 returntomain = True
 userin = ""
@@ -27,7 +28,10 @@ while returntomain == True:
 	if userin == "E":
 		fileToEncrypt = fileprovider.getTextFilePath()
 		fileText = fileprovider.convertFileToText(fileToEncrypt)
-		print(fileText)
+		#print(fileText)
+		
+		newText = plug1.translate(fileText)
+		print(newText)
 		
 		print("Returning the main menu")
 		returntomain = True
