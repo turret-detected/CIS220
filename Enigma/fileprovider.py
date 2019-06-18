@@ -11,19 +11,19 @@ from tkinter import *
 import csv
 
 
-def getKeyFilePath():
+def getKeyFilePath(): #opens GUI file selector for a .csv key file
 	keyFile = Tk()
 	keyFile.filename =  filedialog.askopenfilename(initialdir = "/",title = "Select key file",filetypes = (("csv files","*.csv"),("all files","*.*")))
 	return keyFile.filename
 	keyFile.destroy()
 
-def getTextFilePath():	
+def getTextFilePath(): #opens a GUI file selector for a .txt file
 	textFile = Tk()
 	textFile.filename =  filedialog.askopenfilename(initialdir = "/",title = "Select text file",filetypes = (("text files","*.txt"),("all files","*.*")))
 	return textFile.filename
 	textFile.destroy()
 	
-def convertCSVToDict(filepath):
+def convertCSVToDict(filepath): #converts a .csv file to a dict
 	keyDict = {}
 	reader = csv.DictReader(open(filepath, 'r'), delimiter = ",")
 	
@@ -34,13 +34,13 @@ def convertCSVToDict(filepath):
 		
 	return keyDict
 	
-def convertFileToText(filepath):
+def convertFileToText(filepath): #takes a filepath for a .txt file and converts it to string
 	file = open(filepath, 'r')
 	contents = file.read()
 	file.close()
 	return contents
 	
-def fixText(text):
+def fixText(text): #fixes commas and single quotes in the text for use with the plugboard
 	newText = ""
 	for letter in text:
 		if letter == ",":
