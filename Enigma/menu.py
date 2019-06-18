@@ -5,7 +5,6 @@
 #Filename: menu.py
 #Desc: Provides a series of functions to print menus
 
-
 #Base menu (copy and paste this and modify it) This should never be called.
 def print_menu():
 	#....("1234567890123456789012345678901234567890123456789012345678901234567890123456789")

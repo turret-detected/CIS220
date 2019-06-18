@@ -4,11 +4,12 @@
 #Project: Enigma Encryptor
 #Filename: plug1.py
 #Desc: Initial encryption functionality
+
 import plugboard
 plug = plugboard.getPlugboard()
 plug.update({" ":" ","\n":"\n"})
    
-def translate(phrase,dictionary):
+def translate(phrase,dictionary=plug):
     translation = ""
     for letter in phrase:
         #print (letter, 'corresponds to', plug[letter])

@@ -5,7 +5,6 @@
 #Filename: fileprovider.py
 #Desc: Provides GUI based file selection functions
 
-
 from tkinter import filedialog
 from tkinter import *
 import csv

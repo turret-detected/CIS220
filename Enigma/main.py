@@ -5,7 +5,6 @@
 #Filename: main.py
 #Desc: Primary Enigma class
 
-
 import menu
 import fileprovider
 import plugboard
