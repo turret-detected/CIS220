@@ -6,7 +6,7 @@
 #Desc: Primary Enigma class
 
 import menu
-import fileprovider
+import utilities
 import plugboard
 import plug1
 
@@ -25,9 +25,9 @@ while returntomain == True:
 	#	returntomain = True
 		
 	if userin == "E":
-		fileToEncrypt = fileprovider.getTextFilePath()
-		fileText = fileprovider.convertFileToText(fileToEncrypt)
-		fixedText = fileprovider.fixText(fileText)
+		fileToEncrypt = utilities.getTextFilePath()
+		fileText = utilities.convertFileToText(fileToEncrypt)
+		fixedText = utilities.fixText(fileText)
 		
 		newText = plug1.translate(fixedText)
 		print("Output: \n")
@@ -43,9 +43,9 @@ while returntomain == True:
 		returntomain = True
 		
 	#elif userin == "K":
-	#	keyFile = fileprovider.getKeyFilePath()
+	#	keyFile = utilities.getKeyFilePath()
 	#	print(keyFile)
-	#	print(fileprovider.convertCSVToDict(keyFile))
+	#	print(utilities.convertCSVToDict(keyFile))
 		
 	elif userin == "Q":
 		print("Goodbye")
