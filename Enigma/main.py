@@ -24,7 +24,7 @@ while returntomain == True:
 	#	null = input()
 	#	returntomain = True
 		
-	if userin == "E":
+	if userin == "E": #File selection, encrypts text and outs in console
 		fileToEncrypt = utilities.getTextFilePath()
 		fileText = utilities.convertFileToText(fileToEncrypt)
 		fixedText = utilities.fixText(fileText)
@@ -37,6 +37,9 @@ while returntomain == True:
 		print("Returning the main menu")
 		returntomain = True
 		
+		#TODO
+		#Convert most of this code into a util function so we can use it with decryption
+		#Add the ability to output encrypted text into a file
 		
 	elif userin == "D":
 		print("NYI")
