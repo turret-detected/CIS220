@@ -7,9 +7,9 @@
 
 import plugboard
 plug = plugboard.getPlugboard()
-plug.update({" ":" ","\n":"\n"})
+plug.update({" ":" ","\n":"\n"}) #temporary until character validation is added
    
-def translate(phrase,dictionary=plug):
+def translate(phrase,dictionary=plug): #each string char is a key from dict, outputs value
     translation = ""
     for letter in phrase:
         #print (letter, 'corresponds to', plug[letter])
