@@ -40,6 +40,7 @@ while returntomain == True:
 		#TODO
 		#Convert most of this code into a util function so we can use it with decryption
 		#Add the ability to output encrypted text into a file
+		#Add "press any key to return to main menu"
 		
 	elif userin == "D":
 		print("NYI")
