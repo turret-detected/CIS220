@@ -10,10 +10,25 @@ plug = plugboard.getPlugboard()
 plug.update({" ":" ","\n":"\n"}) #temporary until character validation is added
    
 def translate(phrase,dictionary=plug): #each string char is a key from dict, outputs value
+    count = 0
     translation = ""
-    for letter in phrase:
-        #print (letter, 'corresponds to', plug[letter])
-        translation += dictionary[letter]
+    for char in phrase:
+        if char in plugboard.values():
+                translation += dictionary[letter]   
+        else:
+            if char is " ":
+                ++count
+                translation  += " "
+            elif char is  "\n":
+                    pass
+            else:
+                   translation += char 
+        if count >= 5:
+            count = 0
+            translation += "\n" 
+        
+        
+        
     return translation
 
 #TODO	
