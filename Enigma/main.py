@@ -17,7 +17,7 @@ userin = ""
 while returntomain == True:
 	returntomain = False
 	menu.welcome_menu()
-	userin = input()
+	userin = input("> ")
 	
 	#if userin == "I":
 	#	menu.instruction_menu()
