@@ -7,19 +7,19 @@
 
 import plugboard
 plug = plugboard.getPlugboard()
-plug.update({" ":" ","\n":"\n"}) #temporary until character validation is added
+#plug.update({" ":" ","\n":"\n"}) #temporary until character validation is added
    
 def translate(phrase,dictionary=plug): #each string char is a key from dict, outputs value
     count = 0
     translation = ""
     for char in phrase:
-        if char in plugboard.values():
-                translation += dictionary[letter]   
+        if char in dictionary.values():
+                translation += dictionary[char]   
         else:
-            if char is " ":
+            if char == " ":
                 ++count
                 translation  += " "
-            elif char is  "\n":
+            elif char ==  "\n":
                     pass
             else:
                    translation += char 
@@ -28,7 +28,7 @@ def translate(phrase,dictionary=plug): #each string char is a key from dict, out
             translation += "\n" 
         
         
-        
+    #print(translation)     
     return translation
 
 #TODO	
