@@ -10,6 +10,7 @@ from tkinter import *
 import tkinter
 import csv
 import plugboard
+import plug1
 
 
 def getKeyFilePath(): #opens GUI file selector for a .csv key file
@@ -95,21 +96,23 @@ def fixTextEncrypt(text): #fixes commas and single quotes in the text for use wi
 def fixTextDecrypt(text):
 	newText = ""
 	for letter in text:
-		if letter == "/"
+		if letter == "/":
 			letter = ","
-		elif letter == "#"
+		elif letter == "#":
 			letter = "'"
 		newText += letter
 		
 	return newText
 	
 def encryptText():
-	fileToEncrypt = getTextFilePath()
-	fileText = convertFileToText(fileToEncrypt)
-	fixedText = fixText(fileText)
+	fileToEncrypt = getTextFilePath() #get file path
+	fileText = convertFileToText(fileToEncrypt) #file contents to string
+	fixedText = fixTextEncrypt(fileText) #convert comma and single quote
 		
-	newText = plug1.translate(fixedText)
-	return newText	
+	newText = plug1.translate(fixedText) #translate file
+	saveFilePath = getSaveFilePath() #open gui to save file
+	convertTextToFile(saveFilePath, newText)
+	#return newText	
 			
 		
 def testRun():

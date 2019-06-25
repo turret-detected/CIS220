@@ -25,11 +25,11 @@ while returntomain == True:
 	#	returntomain = True
 		
 	if userin == "E": #File selection, encrypts text and outs in console
-		newText = utilities.encryptText()
-		
-		print("Output: \n")
-		print(newText)
-		print("\n")
+		#newText = utilities.encryptText()
+		utilities.encryptText()
+		#print("Output: \n")
+		#print(newText)
+		#print("\n")
 		
 		print("Returning the main menu")
 		returntomain = True
@@ -40,6 +40,9 @@ while returntomain == True:
 		#Add "press any key to return to main menu"
 		
 	elif userin == "D":
+	
+		
+	
 		print("NYI")
 		returntomain = True
 		#TODO
