@@ -57,22 +57,31 @@ def convertTextToFile(filepath, stringToSave): #takes a file path and a string, 
 	currentfile.write(stringToSave)
 	currentfile.close()
 	
-def fixedPlugboard(plugDict=plugboard.getPlugboard()):
-	for i in plugDict.keys():
-		if i == "/":
-			i = ","
-		elif i == "#":
-			i = '"'
-			
-	for i in plugDict.values():
-		if i == "/":
-			i = ","
-		elif i == "#":
-			i = '"'
-			
-	return plugDict
+def fixedPlugboard(plugDict=plugboard.getPlugboard()): #WIP adjusts plugboard to handle commas and quotes
+	currentDict = plugDict
 	
-def fixText(text): #fixes commas and single quotes in the text for use with the plugboard
+	for i in currentDict.keys():
+		if i == "/":
+			#i = ","
+			currentDict.update({',':currentDict["/"]})
+		elif i == "#":
+			#i = '"'
+			currentDict.update({'"':currentDict["#"]})
+
+			
+	for i in currentDict:
+		if i == "/":
+			#i = ","
+			dictionary
+			currentDict.update({KEY:','})
+			
+		elif i == "#":
+			#i = '"'
+			currentDict.update({KEY:'"'})
+			
+	return currentDict
+	
+def fixTextEncrypt(text): #fixes commas and single quotes in the text for use with the plugboard
 	newText = ""
 	for letter in text:
 		if letter == ",":
@@ -82,6 +91,17 @@ def fixText(text): #fixes commas and single quotes in the text for use with the 
 		newText += letter
 		
 	return newText 
+	
+def fixTextDecrypt(text):
+	newText = ""
+	for letter in text:
+		if letter == "/"
+			letter = ","
+		elif letter == "#"
+			letter = "'"
+		newText += letter
+		
+	return newText
 	
 def encryptText():
 	fileToEncrypt = getTextFilePath()
