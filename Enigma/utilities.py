@@ -9,6 +9,7 @@ from tkinter import filedialog
 from tkinter import *
 import tkinter
 import csv
+import plugboard
 
 
 def getKeyFilePath(): #opens GUI file selector for a .csv key file
@@ -16,12 +17,18 @@ def getKeyFilePath(): #opens GUI file selector for a .csv key file
 	keyFile.filename =  filedialog.askopenfilename(initialdir = "/",title = "Select key file",filetypes = (("csv files","*.csv"),("all files","*.*")))
 	return keyFile.filename
 	keyFile.destroy()
-
+	
+	
 def getTextFilePath(): #opens a GUI file selector for a .txt file
 	textFile = Tk()
 	textFile.filename =  filedialog.askopenfilename(initialdir = "/",title = "Select text file",filetypes = (("text files","*.txt"),("all files","*.*")))
 	return textFile.filename
 	#textFile.destroy()
+	
+def getSaveFilePath(): #opens a GUI save file window
+	saveFilePath = Tk()
+	saveFilePath.filename = filedialog.asksaveasfilename(initialdir = "/",title = "Save text file",filetypes = (("text files","*.txt"),("all files","*.*")))
+	return saveFilePath.filename
 	
 	
 def convertCSVToDict(filepath): #converts a .csv file to a dict
@@ -36,10 +43,34 @@ def convertCSVToDict(filepath): #converts a .csv file to a dict
 	return keyDict
 	
 def convertFileToText(filepath): #takes a filepath for a .txt file and converts it to string
-	file = open(filepath, 'r')
-	contents = file.read()
-	file.close()
+	currentfile = open(filepath, 'r')
+	contents = currentfile.read()
+	currentfile.close()
 	return contents
+	
+def convertTextToFile(filepath, stringToSave): #takes a file path and a string, puts into file
+	if '.txt' in filepath:
+		currentfile = open(filepath, 'w+')
+	else:
+		currentfile = open(filepath+'.txt', 'w+')
+	
+	currentfile.write(stringToSave)
+	currentfile.close()
+	
+def fixedPlugboard(plugDict=plugboard.getPlugboard()):
+	for i in plugDict.keys():
+		if i == "/":
+			i = ","
+		elif i == "#":
+			i = '"'
+			
+	for i in plugDict.values():
+		if i == "/":
+			i = ","
+		elif i == "#":
+			i = '"'
+			
+	return plugDict
 	
 def fixText(text): #fixes commas and single quotes in the text for use with the plugboard
 	newText = ""
@@ -61,4 +92,7 @@ def encryptText():
 	return newText	
 			
 		
-	
+def testRun():
+	test = getSaveFilePath()
+	teststring = "BLAH BLAH BLAH BLAH \n BLAH BLAH BLAH"
+	convertTextToFile(test, teststring)
