@@ -15,3 +15,21 @@ def translate(phrase,dictionary=plug): #each string char is a key from dict, out
         #print (letter, 'corresponds to', plug[letter])
         translation += dictionary[letter]
     return translation
+
+#TODO	
+#add to for loop
+#
+#if char is in dict keys
+#	translate char, add to string
+#else
+#	if char is a space
+#		count++
+#		add space to string
+#	if char is a newline
+#		pass
+#	else
+#		add char to string
+#
+#if count >= 5
+#	count = 0
+#	add newline to string
