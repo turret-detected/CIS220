@@ -25,11 +25,8 @@ while returntomain == True:
 	#	returntomain = True
 		
 	if userin == "E": #File selection, encrypts text and outs in console
-		fileToEncrypt = utilities.getTextFilePath()
-		fileText = utilities.convertFileToText(fileToEncrypt)
-		fixedText = utilities.fixText(fileText)
+		newText = utilities.encryptText()
 		
-		newText = plug1.translate(fixedText)
 		print("Output: \n")
 		print(newText)
 		print("\n")
@@ -45,6 +42,8 @@ while returntomain == True:
 	elif userin == "D":
 		print("NYI")
 		returntomain = True
+		#TODO
+		#Reads encrypted file
 		
 	#elif userin == "K":
 	#	keyFile = utilities.getKeyFilePath()

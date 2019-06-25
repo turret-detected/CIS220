@@ -7,6 +7,7 @@
 
 from tkinter import filedialog
 from tkinter import *
+import tkinter
 import csv
 
 
@@ -20,7 +21,8 @@ def getTextFilePath(): #opens a GUI file selector for a .txt file
 	textFile = Tk()
 	textFile.filename =  filedialog.askopenfilename(initialdir = "/",title = "Select text file",filetypes = (("text files","*.txt"),("all files","*.*")))
 	return textFile.filename
-	textFile.destroy()
+	#textFile.destroy()
+	
 	
 def convertCSVToDict(filepath): #converts a .csv file to a dict
 	keyDict = {}
@@ -49,7 +51,14 @@ def fixText(text): #fixes commas and single quotes in the text for use with the 
 		newText += letter
 		
 	return newText 
+	
+def encryptText():
+	fileToEncrypt = getTextFilePath()
+	fileText = convertFileToText(fileToEncrypt)
+	fixedText = fixText(fileText)
 		
+	newText = plug1.translate(fixedText)
+	return newText	
 			
 		
 	
