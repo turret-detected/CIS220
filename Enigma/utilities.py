@@ -17,8 +17,7 @@ def getKeyFilePath(): #opens GUI file selector for a .csv key file
 	keyFile = Tk()
 	keyFile.filename =  filedialog.askopenfilename(initialdir = "/",title = "Select key file",filetypes = (("csv files","*.csv"),("all files","*.*")))
 	return keyFile.filename
-	keyFile.destroy()
-	
+	#keyFile.destroy()
 	
 def getTextFilePath(): #opens a GUI file selector for a .txt file
 	textFile = Tk()
@@ -30,18 +29,6 @@ def getSaveFilePath(): #opens a GUI save file window
 	saveFilePath = Tk()
 	saveFilePath.filename = filedialog.asksaveasfilename(initialdir = "/",title = "Save text file",filetypes = (("text files","*.txt"),("all files","*.*")))
 	return saveFilePath.filename
-	
-	
-def convertCSVToDict(filepath): #converts a .csv file to a dict
-	keyDict = {}
-	reader = csv.DictReader(open(filepath, 'r'), delimiter = ",")
-	
-	
-	for row in reader:
-		keyDict.update({row['key']:row['value']})
-		#print(keyDict)
-		
-	return keyDict
 	
 def convertFileToText(filepath): #takes a filepath for a .txt file and converts it to string
 	currentfile = open(filepath, 'r')
@@ -57,6 +44,57 @@ def convertTextToFile(filepath, stringToSave): #takes a file path and a string, 
 	
 	currentfile.write(stringToSave)
 	currentfile.close()
+	
+def fixTextEncrypt(text): #fixes commas and single quotes in the text for use with the plugboard
+	newText = ""
+	for letter in text:
+		if letter == ",":
+			letter = "/"
+		elif letter == "'":
+			letter = "#"
+		newText += letter
+		
+	return newText 
+	
+def fixTextDecrypt(text): #reverses commas and quotes (UNTESTED)
+	newText = ""
+	for letter in text:
+		if letter == "/":
+			letter = ","
+		elif letter == "#":
+			letter = "'"
+		newText += letter
+		
+	return newText
+	
+def encryptText():
+	fileToEncrypt = getTextFilePath() #get file path
+	fileText = convertFileToText(fileToEncrypt) #file contents to string
+	fixedText = fixTextEncrypt(fileText) #convert comma and single quote
+		
+	newText = plug1.translate(fixedText) #translate file
+	saveFilePath = getSaveFilePath() #open gui to save file
+	convertTextToFile(saveFilePath, newText)
+	#return newText	
+
+
+#DEBUG, OLD, OR WIP FUNCTIONS		
+def testRun():
+	test = getSaveFilePath()
+	teststring = "BLAH BLAH BLAH BLAH \n BLAH BLAH BLAH"
+	convertTextToFile(test, teststring)
+	
+def convertCSVToDict(filepath): #converts a .csv file to a dict
+	keyDict = {}
+	reader = csv.DictReader(open(filepath, 'r'), delimiter = ",")
+	
+	
+	for row in reader:
+		keyDict.update({row['key']:row['value']})
+		#print(keyDict)
+		
+	return keyDict
+	
 	
 def fixedPlugboard(plugDict=plugboard.getPlugboard()): #WIP adjusts plugboard to handle commas and quotes
 	currentDict = plugDict
@@ -81,41 +119,3 @@ def fixedPlugboard(plugDict=plugboard.getPlugboard()): #WIP adjusts plugboard to
 			currentDict.update({KEY:'"'})
 			
 	return currentDict
-	
-def fixTextEncrypt(text): #fixes commas and single quotes in the text for use with the plugboard
-	newText = ""
-	for letter in text:
-		if letter == ",":
-			letter = "/"
-		elif letter == "\'":
-			letter = "#"
-		newText += letter
-		
-	return newText 
-	
-def fixTextDecrypt(text):
-	newText = ""
-	for letter in text:
-		if letter == "/":
-			letter = ","
-		elif letter == "#":
-			letter = "'"
-		newText += letter
-		
-	return newText
-	
-def encryptText():
-	fileToEncrypt = getTextFilePath() #get file path
-	fileText = convertFileToText(fileToEncrypt) #file contents to string
-	fixedText = fixTextEncrypt(fileText) #convert comma and single quote
-		
-	newText = plug1.translate(fixedText) #translate file
-	saveFilePath = getSaveFilePath() #open gui to save file
-	convertTextToFile(saveFilePath, newText)
-	#return newText	
-			
-		
-def testRun():
-	test = getSaveFilePath()
-	teststring = "BLAH BLAH BLAH BLAH \n BLAH BLAH BLAH"
-	convertTextToFile(test, teststring)
