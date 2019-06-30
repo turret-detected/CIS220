@@ -30,7 +30,8 @@ while returntomain == True:
 		#print("Output: \n")
 		#print(newText)
 		#print("\n")
-		
+		print("Press any key to return to main menu")
+		test = input()
 		print("Returning the main menu")
 		returntomain = True
 		
@@ -41,9 +42,11 @@ while returntomain == True:
 		
 	elif userin == "D":
 	
+		utilities.decryptText()
 		
-	
-		print("NYI")
+		print("Press any key to return to main menu")
+		test = input()
+		print("Returning the main menu")
 		returntomain = True
 		#TODO
 		#Reads encrypted file

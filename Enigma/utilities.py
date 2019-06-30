@@ -11,6 +11,7 @@ import tkinter
 import csv
 import plugboard
 import plug1
+import decrypter
 
 
 def getKeyFilePath(): #opens GUI file selector for a .csv key file
@@ -77,6 +78,15 @@ def encryptText():
 	convertTextToFile(saveFilePath, newText)
 	#return newText	
 
+def decryptText():
+	invertDict = decrypter.invertedDict() #get inverted dict
+	
+	fileToDecrypt = getTextFilePath() #get file path
+	fileText = convertFileToText(fileToDecrypt) #file contents to string
+	convertedText = plug1.translate(fileText, invertDict) #translate file
+	fixedText = fixTextDecrypt(convertedText) #convert slash and hash
+	saveFilePath = getSaveFilePath() #gui to save file
+	convertTextToFile(saveFilePath, fixedText)
 
 #DEBUG, OLD, OR WIP FUNCTIONS		
 def testRun():
