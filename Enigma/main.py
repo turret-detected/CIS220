@@ -18,43 +18,22 @@ while returntomain == True:
 	returntomain = False
 	menu.welcome_menu()
 	userin = input("> ")
-	
-	#if userin == "I":
-	#	menu.instruction_menu()
-	#	null = input()
-	#	returntomain = True
-		
-	if userin == "E": #File selection, encrypts text and outs in console
-		#newText = utilities.encryptText()
+			
+	if userin == "E": #File selection, encrypts, outputs to another file
 		utilities.encryptText()
-		#print("Output: \n")
-		#print(newText)
-		#print("\n")
+
 		print("Press any key to return to main menu")
 		test = input()
 		print("Returning the main menu")
 		returntomain = True
 		
-		#TODO
-		#Convert most of this code into a util function so we can use it with decryption
-		#Add the ability to output encrypted text into a file
-		#Add "press any key to return to main menu"
-		
-	elif userin == "D":
-	
+	elif userin == "D": #File selection, decrypts, outputs to another file
 		utilities.decryptText()
 		
 		print("Press any key to return to main menu")
 		test = input()
 		print("Returning the main menu")
 		returntomain = True
-		#TODO
-		#Reads encrypted file
-		
-	#elif userin == "K":
-	#	keyFile = utilities.getKeyFilePath()
-	#	print(keyFile)
-	#	print(utilities.convertCSVToDict(keyFile))
 		
 	elif userin == "Q":
 		print("Goodbye")
