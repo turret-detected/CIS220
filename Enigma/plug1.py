@@ -26,7 +26,7 @@ def translate(phrase,dictionary=plug): #each string char is a key from dict, out
 				#print("Adding count" + str(count)) #DEBUG
 				translation	 += " "
 			elif char ==  "\n":
-				pass
+				translation += " "
 			else:
 				translation += char 
 		
