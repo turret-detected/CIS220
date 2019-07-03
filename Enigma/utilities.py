@@ -79,6 +79,23 @@ def decryptText(): #decrypt file
 	fixedText = fixTextDecrypt(convertedText) #convert slash and hash
 	saveFilePath = getSaveFilePath() #gui to save file
 	convertTextToFile(saveFilePath, fixedText) #save text to file
+	
+	
+def encryptTextArgs(inputFile, outputFile): #GUI encrypt
+	fileText = convertFileToText(inputFile) #file contents to string
+	fixedText = fixTextEncrypt(fileText) #convert comma and single quote
+	newText = plug1.translate(fixedText) #translate file
+	saveFilePath = outputFile #save file path from args
+	convertTextToFile(saveFilePath, newText) #save text to file
+	
+def decryptTextArgs(inputFile, outputFile): #GUI decrypt
+	invertDict = decrypter.invertedDict() #get inverted dict
+	
+	fileText = convertFileToText(inputFile) #file contents to string
+	convertedText = plug1.translate(fileText, invertDict) #translate file
+	fixedText = fixTextDecrypt(convertedText) #convert slash and hash
+	saveFilePath = outputFile #save file path from args
+	convertTextToFile(saveFilePath, fixedText) #save text to file
 
 #DEBUG, OLD, OR WIP FUNCTIONS		
 
