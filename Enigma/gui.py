@@ -50,6 +50,7 @@ def run_gui():
 	appMain.setTitle("Enigma Machine")
 	appMain.setIcon("assets/icon.gif") #does not work for some reason
 	appMain.setBg("#6B7A8F")
+	appMain.setFont(family="Verdana")
 	
 	
 	#TOP
@@ -68,24 +69,29 @@ def run_gui():
 	
 	#MIDDLE LEFT
 	appMain.startFrame("MIDDLE_LEFT", row=1, column=0)
-	appMain.setBg("#DCC7AA")
+	#appMain.setBg("#6B7A8F")
 	
-	appMain.addLabel("InputFile", "ENIGMA")
+	appMain.addLabel("InputFile", "")
 	appMain.addLabel("OutputFile", "")
-	appMain.getLabelWidget("InputFile").config(font=("Verdana 16"))
-	appMain.getLabelWidget("OutputFile").config(font=("Verdana 16"))
+	appMain.getLabelWidget("InputFile").config(font=("Verdana 14"))
+	appMain.getLabelWidget("OutputFile").config(font=("Verdana 14"))
 	appMain.setLabelAlign("InputFile", "left")
 	appMain.setLabelAlign("OutputFile", "left")
 	appMain.setLabelPadding("InputFile", [20, 0])
 	appMain.setLabelPadding("OutputFile", [20, 0])
+	
+	#color
+	appMain.setLabelFg("InputFile", "white")
+	appMain.setLabelFg("OutputFile", "white")
 	
 	appMain.stopFrame()
 	
 	
 	#MIDDLE RIGHT
 	appMain.startFrame("MIDDLE_RIGHT", row=1, column=1)
-	appMain.setBg("#DCC7AA")
+	#appMain.setBg("#DCC7AA")
 	
+	#Button funcs
 	def selectIn(): #file selection in
 		FilePaths.InFilePath = utilities.getTextFilePath()
 		null = FilePaths.checkInput()
@@ -96,21 +102,17 @@ def run_gui():
 		null = FilePaths.checkOutput()
 		appMain.setLabel("OutputFile", FilePaths.OutFilePath)
 	
+	#Selection buttons
 	appMain.addButton("SelectIn", selectIn)
 	appMain.addButton("SelectOut", selectOut)
 	appMain.setButton("SelectIn", "Choose input file")
 	appMain.setButton("SelectOut", "Choose output file")
-	#appMain.setButtonPadding("SelectIn", [100, 0])
-	#appMain.setButtonPadding("SelectOut", [100, 0])
-	#appMain.setButtonAlign("SelectIn", "right")
-	#appMain.setButtonAlign("SelectOut", "right")
 	appMain.setButtonSticky("SelectIn", "")
 	appMain.setButtonSticky("SelectOut", "")
-	#appMain.setButtonStrech("SelectIn", "none")
-	
+
+	#Color
 	appMain.setButtonFg("SelectIn", "white")
 	appMain.setButtonBg("SelectIn", "#F7882F")
-	
 	appMain.setButtonFg("SelectOut", "white")
 	appMain.setButtonBg("SelectOut", "#F7882F")
 	
@@ -151,6 +153,7 @@ def run_gui():
 		
 	appMain.addButtons(buttonList, mainButtons)
 	
+	#Color
 	for i in buttonList:
 		appMain.setButtonFg(i, "white")
 		appMain.setButtonBg(i, "#F7882F")
