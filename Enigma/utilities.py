@@ -41,7 +41,11 @@ def convertTextToFile(filepath, stringToSave): #takes a file path and a string, 
 	else:
 		currentfile = open(filepath+'.txt', 'w+')
 	
-	currentfile.write(stringToSave)
+	#fixes space at new line
+	newString = stringToSave.replace("\n ", "\n")
+	
+	currentfile.write(newString)
+	
 	currentfile.close()
 	
 def fixTextEncrypt(text): #fixes commas and single quotes in the text for use with the plugboard
