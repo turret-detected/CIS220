@@ -1,4 +1,9 @@
-
+#Author: Andrew Mohnkern
+#Date: 7/2/19
+#Class: CIS 220
+#Project: Enigma Encryptor
+#Filename: gui.py
+#Desc: Provides functional GUI
 
 import utilities
 from appJar import gui
