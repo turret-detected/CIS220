@@ -6,8 +6,8 @@ from appJar import gui
 
 
 def run_gui():
-	#vars
 	
+	#static class to hold file paths
 	class FilePaths():
 		
 		InFilePath = ""
@@ -24,11 +24,12 @@ def run_gui():
 
 	#Main window
 	appMain = gui("Enigma", "800x600")
-	
 	appMain.setBg("cyan")
+	
 	
 	#TOP
 	appMain.startFrame("TOP", row=0, column=0, colspan=2)
+	
 	appMain.addLabel("title", "Enigma")
 	appMain.setLabelBg("title", "cyan")
 	appMain.getLabelWidget("title").config(font=("Arial 28"))
@@ -37,14 +38,11 @@ def run_gui():
 	
 	appMain.stopFrame()
 	
-	
-
-	
 	#MIDDLE LEFT
 	appMain.startFrame("MIDDLE_LEFT", row=1, column=0)
 	
-	appMain.addLabel("InputFile")
-	appMain.addLabel("OutputFile")
+	appMain.addLabel("InputFile", "")
+	appMain.addLabel("OutputFile", "")
 	appMain.getLabelWidget("InputFile").config(font=("Arial 16"))
 	appMain.getLabelWidget("OutputFile").config(font=("Arial 16"))
 	appMain.setLabelAlign("InputFile", "left")
@@ -57,11 +55,14 @@ def run_gui():
 	
 	#MIDDLE RIGHT
 	appMain.startFrame("MIDDLE_RIGHT", row=1, column=1)
+	
 	def selectIn():
 		FilePaths.InFilePath = utilities.getTextFilePath()
+		appMain.setLabel("InputFile", FilePaths.InFilePath)
 	
 	def selectOut():
 		FilePaths.OutFilePath = utilities.getSaveFilePath()
+		appMain.setLabel("OutputFile", FilePaths.OutFilePath)
 	
 	appMain.addButton("SelectIn", selectIn)
 	appMain.addButton("SelectOut", selectOut)
@@ -69,15 +70,12 @@ def run_gui():
 	#appMain.setButtonPadding("SelectOut", [100, 0])
 	#appMain.setButtonAlign("SelectIn", "right")
 	#appMain.setButtonAlign("SelectOut", "right")
-	appMain.setButtonSticky("SelectIn", "e")
-	appMain.setButtonSticky("SelectOut", "e")
-
-
-
+	appMain.setButtonSticky("SelectIn", "")
+	appMain.setButtonSticky("SelectOut", "")
+	#appMain.setButtonStrech("SelectIn", "none")
+	
 	
 	appMain.stopFrame()
-	
-	
 	
 	#BOTTOM
 	appMain.startFrame("BOTTOM", row=2, column=0, colspan=2)
@@ -105,9 +103,22 @@ def run_gui():
 		elif button == "Decrypt":
 			decryptButton()
 			
-	appMain.addButtons(["Encrypt", "Decrypt"], mainButtons)
+		#Quit	
+		elif button == "Quit":
+			appMain.stop()
+			
+	appMain.addButtons(["Encrypt", "Decrypt", "Quit"], mainButtons)
 	
 	appMain.stopFrame()
 			
 	#MUST BE AT BOTTOM
 	appMain.go()
+	
+	
+#DEBUG LINE
+#run_gui()
+
+
+
+
+
