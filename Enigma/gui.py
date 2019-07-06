@@ -56,13 +56,6 @@ def run_gui():
 	#TOP
 	appMain.startFrame("TOP", row=0, column=0, colspan=2) #centered top frame
 	appMain.setBg("#6B7A8F")
-	
-	#appMain.addLabel("title", "Enigma")
-	#appMain.setLabelBg("title", "cyan")
-	#appMain.getLabelWidget("title").config(font=("Arial 28"))
-	
-
-	
 	appMain.addImage("banner", "assets/banner.gif")
 	
 	appMain.stopFrame()
