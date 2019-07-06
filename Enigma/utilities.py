@@ -105,23 +105,3 @@ def decryptTextArgs(inputFile, outputFile): #GUI decrypt
 	fixedText = fixTextDecrypt(convertedText) #convert slash and hash
 	saveFilePath = outputFile #save file path from args
 	convertTextToFile(saveFilePath, fixedText) #save text to file
-
-#DEBUG, OLD, OR WIP FUNCTIONS		
-
-def getKeyFilePath(): #opens GUI file selector for a .csv key file
-	keyFile = Tk()
-	keyFile.filename =  filedialog.askopenfilename(initialdir = "/",title = "Select key file",filetypes = (("csv files","*.csv"),("all files","*.*")))
-	return keyFile.filename #warning this has the whitebox bug still
-
-def testRun():
-	test = getSaveFilePath()
-	teststring = "BLAH BLAH BLAH BLAH \n BLAH BLAH BLAH"
-	convertTextToFile(test, teststring)
-	
-def convertCSVToDict(filepath): #converts a .csv file to a dict
-	keyDict = {}
-	reader = csv.DictReader(open(filepath, 'r'), delimiter = ",")
-	
-	for row in reader:
-		keyDict.update({row['key']:row['value']})		
-	return keyDict

@@ -15,7 +15,6 @@ def run_gui():
 		
 		def checkInput(): #returns false if input filepath is invalid, throws appropriate errorboxes
 			InExt = FilePaths.InFilePath[-4:] #takes last four characters
-			#print(InExt) #DEBUG
 		
 			if FilePaths.InFilePath == "":
 				appMain.errorBox("Error", "You have not selected a file to encrypt.")
@@ -62,7 +61,6 @@ def run_gui():
 	
 	#MIDDLE LEFT
 	appMain.startFrame("MIDDLE_LEFT", row=1, column=0)
-	#appMain.setBg("#6B7A8F")
 	
 	appMain.addLabel("InputFile", "")
 	appMain.addLabel("OutputFile", "")
@@ -82,7 +80,6 @@ def run_gui():
 	
 	#MIDDLE RIGHT
 	appMain.startFrame("MIDDLE_RIGHT", row=1, column=1)
-	#appMain.setBg("#DCC7AA")
 	
 	#Button funcs
 	def selectIn(): #file selection in
@@ -155,12 +152,3 @@ def run_gui():
 			
 	#MUST BE AT BOTTOM
 	appMain.go()
-	
-	
-#DEBUG LINE
-#run_gui()
-
-
-
-
-
