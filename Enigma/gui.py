@@ -47,14 +47,15 @@ def run_gui():
 			
 	#Main window
 	appMain = gui("Enigma", "800x600")
-	appMain.setBg("cyan")
+	appMain.setBg("#6B7A8F")
 	
 	
 	#TOP
 	appMain.startFrame("TOP", row=0, column=0, colspan=2) #centered top frame
+	appMain.setBg("#6B7A8F")
 	
 	appMain.addLabel("title", "Enigma")
-	appMain.setLabelBg("title", "cyan")
+	#appMain.setLabelBg("title", "cyan")
 	appMain.getLabelWidget("title").config(font=("Arial 28"))
 	
 	#appMain.addImage("banner", "Assets/banner.gif")
@@ -63,6 +64,7 @@ def run_gui():
 	
 	#MIDDLE LEFT
 	appMain.startFrame("MIDDLE_LEFT", row=1, column=0)
+	appMain.setBg("#DCC7AA")
 	
 	appMain.addLabel("InputFile", "")
 	appMain.addLabel("OutputFile", "")
@@ -78,6 +80,7 @@ def run_gui():
 	
 	#MIDDLE RIGHT
 	appMain.startFrame("MIDDLE_RIGHT", row=1, column=1)
+	appMain.setBg("#DCC7AA")
 	
 	def selectIn(): #file selection in
 		FilePaths.InFilePath = utilities.getTextFilePath()
@@ -100,6 +103,12 @@ def run_gui():
 	appMain.setButtonSticky("SelectIn", "")
 	appMain.setButtonSticky("SelectOut", "")
 	#appMain.setButtonStrech("SelectIn", "none")
+	
+	appMain.setButtonFg("SelectIn", "white")
+	appMain.setButtonBg("SelectIn", "#F7882F")
+	
+	appMain.setButtonFg("SelectOut", "white")
+	appMain.setButtonBg("SelectOut", "#F7882F")
 	
 	
 	appMain.stopFrame()
@@ -132,8 +141,15 @@ def run_gui():
 		#Quit	
 		elif button == "Quit":
 			appMain.stop()
-			
-	appMain.addButtons(["Encrypt", "Decrypt", "Quit"], mainButtons)
+			print("Application quit.")
+		
+	buttonList = ["Encrypt", "Decrypt", "Quit"]
+		
+	appMain.addButtons(buttonList, mainButtons)
+	
+	for i in buttonList:
+		appMain.setButtonFg(i, "white")
+		appMain.setButtonBg(i, "#F7882F")
 	
 	appMain.stopFrame()
 			
