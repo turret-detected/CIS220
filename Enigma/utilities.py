@@ -12,11 +12,16 @@ import csv
 import plugboard
 import plug1
 import decrypter
+import getpass
 
+def getUserDesktop(): #returns the current users desktop
+	currentuser = getpass.getuser()
+	desktoppath = "C:/Users/" + currentuser + "/Desktop/"
+	return desktoppath
 	
 def getTextFilePath(): #opens a GUI file selector for a .txt file
 	textFile = Tk()
-	textFile.filename = filedialog.askopenfilename(initialdir = "/",title = "Select text file",filetypes = (("text files","*.txt"),("all files","*.*")))
+	textFile.filename = filedialog.askopenfilename(initialdir = getUserDesktop(),title = "Select text file",filetypes = (("text files","*.txt"),("all files","*.*")))
 	fileName = textFile.filename
 	textFile.destroy()
 	return fileName
@@ -24,7 +29,7 @@ def getTextFilePath(): #opens a GUI file selector for a .txt file
 	
 def getSaveFilePath(): #opens a GUI save file window
 	saveFilePath = Tk()
-	saveFilePath.filename = filedialog.asksaveasfilename(initialdir = "/",title = "Save text file",filetypes = (("text files","*.txt"),("all files","*.*")))
+	saveFilePath.filename = filedialog.asksaveasfilename(initialdir = getUserDesktop(),title = "Save text file",filetypes = (("text files","*.txt"),("all files","*.*")))
 	fileName = saveFilePath.filename
 	saveFilePath.destroy()
 	return fileName
