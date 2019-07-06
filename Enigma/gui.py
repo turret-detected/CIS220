@@ -47,6 +47,8 @@ def run_gui():
 			
 	#Main window
 	appMain = gui("Enigma", "800x600")
+	appMain.setTitle("Enigma Machine")
+	appMain.setIcon("assets/icon.gif") #does not work for some reason
 	appMain.setBg("#6B7A8F")
 	
 	
@@ -54,11 +56,13 @@ def run_gui():
 	appMain.startFrame("TOP", row=0, column=0, colspan=2) #centered top frame
 	appMain.setBg("#6B7A8F")
 	
-	appMain.addLabel("title", "Enigma")
+	#appMain.addLabel("title", "Enigma")
 	#appMain.setLabelBg("title", "cyan")
-	appMain.getLabelWidget("title").config(font=("Arial 28"))
+	#appMain.getLabelWidget("title").config(font=("Arial 28"))
 	
-	#appMain.addImage("banner", "Assets/banner.gif")
+
+	
+	appMain.addImage("banner", "assets/banner.gif")
 	
 	appMain.stopFrame()
 	
@@ -66,10 +70,10 @@ def run_gui():
 	appMain.startFrame("MIDDLE_LEFT", row=1, column=0)
 	appMain.setBg("#DCC7AA")
 	
-	appMain.addLabel("InputFile", "")
+	appMain.addLabel("InputFile", "ENIGMA")
 	appMain.addLabel("OutputFile", "")
-	appMain.getLabelWidget("InputFile").config(font=("Arial 16"))
-	appMain.getLabelWidget("OutputFile").config(font=("Arial 16"))
+	appMain.getLabelWidget("InputFile").config(font=("Verdana 16"))
+	appMain.getLabelWidget("OutputFile").config(font=("Verdana 16"))
 	appMain.setLabelAlign("InputFile", "left")
 	appMain.setLabelAlign("OutputFile", "left")
 	appMain.setLabelPadding("InputFile", [20, 0])
