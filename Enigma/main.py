@@ -9,36 +9,42 @@ import menu
 import utilities
 import plugboard
 import plug1
+import gui
+
 
 returntomain = True
 userin = ""
 
+def console_main():
+	while returntomain == True:
+		returntomain = False
+		menu.welcome_menu()
+		userin = input("> ")
+				
+		if userin == "E": #File selection, encrypts, outputs to another file
+			utilities.encryptText()
 
-while returntomain == True:
-	returntomain = False
-	menu.welcome_menu()
-	userin = input("> ")
+			print("Press any key to return to main menu")
+			test = input()
+			print("Returning the main menu")
+			returntomain = True
 			
-	if userin == "E": #File selection, encrypts, outputs to another file
-		utilities.encryptText()
+		elif userin == "D": #File selection, decrypts, outputs to another file
+			utilities.decryptText()
+			
+			print("Press any key to return to main menu")
+			test = input()
+			print("Returning the main menu")
+			returntomain = True
+			
+		elif userin == "Q":
+			print("Goodbye")
+			
+		else:
+			print("Invalid Command")
+			returntomain = True
 
-		print("Press any key to return to main menu")
-		test = input()
-		print("Returning the main menu")
-		returntomain = True
-		
-	elif userin == "D": #File selection, decrypts, outputs to another file
-		utilities.decryptText()
-		
-		print("Press any key to return to main menu")
-		test = input()
-		print("Returning the main menu")
-		returntomain = True
-		
-	elif userin == "Q":
-		print("Goodbye")
-		
-	else:
-		print("Invalid Command")
-		returntomain = True
+#for old console version:
+#console_main()
 
+gui.run_gui()
