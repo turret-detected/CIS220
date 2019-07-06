@@ -139,10 +139,10 @@ def run_gui():
 			appMain.stop()
 			print("Application quit.")
 			
-		elif button == "Info":
+		elif button == "Instructions":
 			appMain.infoBox("Instructions", "Use the buttons on the right to select your input file and output destination. Then press the encrypt or decrypt button to create the output file.")
 		
-	buttonList = ["Encrypt", "Decrypt", "Info", "Quit"]
+	buttonList = ["Encrypt", "Decrypt", "Instructions", "Quit"]
 		
 	appMain.addButtons(buttonList, mainButtons)
 	
