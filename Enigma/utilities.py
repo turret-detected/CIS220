@@ -16,13 +16,18 @@ import decrypter
 	
 def getTextFilePath(): #opens a GUI file selector for a .txt file
 	textFile = Tk()
-	textFile.filename =  filedialog.askopenfilename(initialdir = "/",title = "Select text file",filetypes = (("text files","*.txt"),("all files","*.*")))
-	return textFile.filename
+	textFile.filename = filedialog.askopenfilename(initialdir = "/",title = "Select text file",filetypes = (("text files","*.txt"),("all files","*.*")))
+	fileName = textFile.filename
+	textFile.destroy()
+	return fileName
+	#Note to self, python ignores things after the return statement
 	
 def getSaveFilePath(): #opens a GUI save file window
 	saveFilePath = Tk()
 	saveFilePath.filename = filedialog.asksaveasfilename(initialdir = "/",title = "Save text file",filetypes = (("text files","*.txt"),("all files","*.*")))
-	return saveFilePath.filename
+	fileName = saveFilePath.filename
+	saveFilePath.destroy()
+	return fileName
 	
 def convertFileToText(filepath): #takes a filepath for a .txt file and converts its contents to string | Zach did this
 	currentfile = open(filepath, 'r')
@@ -102,7 +107,7 @@ def decryptTextArgs(inputFile, outputFile): #GUI decrypt
 def getKeyFilePath(): #opens GUI file selector for a .csv key file
 	keyFile = Tk()
 	keyFile.filename =  filedialog.askopenfilename(initialdir = "/",title = "Select key file",filetypes = (("csv files","*.csv"),("all files","*.*")))
-	return keyFile.filename
+	return keyFile.filename #warning this has the whitebox bug still
 
 def testRun():
 	test = getSaveFilePath()
