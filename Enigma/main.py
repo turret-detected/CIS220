@@ -12,10 +12,11 @@ import plug1
 import gui
 
 
-returntomain = True
-userin = ""
-
 def console_main():
+
+	returntomain = True
+	userin = ""
+
 	while returntomain == True:
 		returntomain = False
 		menu.welcome_menu()
