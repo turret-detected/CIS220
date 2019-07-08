@@ -1,4 +1,9 @@
-
+#Author: Andrew Mohnkern
+#Date: 7/2/19
+#Class: CIS 220
+#Project: Enigma Encryptor
+#Filename: gui.py
+#Desc: Provides functional GUI
 
 import utilities
 from appJar import gui
@@ -36,8 +41,8 @@ def run_gui():
 				return False
 			
 			elif OutExt != ".txt":
-				appMain.errorBox("Error", "Your output file must be a text file.")
-				FilePaths.OutFilePath = ""
+				#appMain.errorBox("Error", "Your output file must be a text file.")
+				FilePaths.OutFilePath += ".txt"
 				return False
 				
 			else:
@@ -138,8 +143,11 @@ def run_gui():
 		elif button == "Quit":
 			appMain.stop()
 			print("Application quit.")
+			
+		elif button == "Instructions":
+			appMain.infoBox("Instructions", "Use the buttons on the right to select your input file and output destination. Then press the encrypt or decrypt button to create the output file.")
 		
-	buttonList = ["Encrypt", "Decrypt", "Quit"]
+	buttonList = ["Encrypt", "Decrypt", "Instructions", "Quit"]
 		
 	appMain.addButtons(buttonList, mainButtons)
 	
@@ -147,6 +155,8 @@ def run_gui():
 	for i in buttonList:
 		appMain.setButtonFg(i, "white")
 		appMain.setButtonBg(i, "#F7882F")
+		#appMain.setButtonWidth(i, 90) #This breaks everything why
+		#appMain.setButtonHeight(i, 100)
 	
 	appMain.stopFrame()
 			
