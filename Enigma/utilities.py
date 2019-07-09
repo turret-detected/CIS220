@@ -6,6 +6,7 @@
 #Desc: Provides GUI based file selection functions
 
 from tkinter import filedialog
+from tkinter import messagebox
 from tkinter import *
 import tkinter
 import csv
@@ -13,11 +14,41 @@ import plugboard
 import plug1
 import decrypter
 import getpass
+import charFunction
 
 def getUserDesktop(): #returns the current users desktop
 	currentuser = getpass.getuser()
 	desktoppath = "C:/Users/" + currentuser + "/Desktop/"
 	return desktoppath
+	
+def getUnencryptedChars(text):
+	charlist = []
+	finalcharlist = []
+	
+	for i in text:
+		#print(i)
+		charlist.append(charFunction.charFunction(i))
+		
+		
+	for i in charlist:
+		if i == " ":
+			pass
+			
+		elif i == "\n":
+			pass
+			
+		elif i == None:
+			pass
+			
+		else:
+			finalcharlist.append(i)
+		
+	#print("The following characters were not encrypted")	
+	#print(finalcharlist)
+	
+	if finalcharlist != []:
+		messagebox.showinfo("Warning, unencrypted characters", "The following characters were not encrypted:\n"+str(finalcharlist))
+		
 	
 def getTextFilePath(): #opens a GUI file selector for a .txt file
 	textFile = Tk()
@@ -75,16 +106,16 @@ def fixTextDecrypt(text): #reverses commas and quotes
 		
 	return newText
 	
-def encryptText(): #encrypt file
+def encryptText(give=False): #encrypt file OLD
 	fileToEncrypt = getTextFilePath() #get file path
 	fileText = convertFileToText(fileToEncrypt) #file contents to string
 	fixedText = fixTextEncrypt(fileText) #convert comma and single quote
-		
+	
 	newText = plug1.translate(fixedText) #translate file
 	saveFilePath = getSaveFilePath() #open gui to save file
 	convertTextToFile(saveFilePath, newText) #save text to file
 
-def decryptText(): #decrypt file
+def decryptText(): #decrypt file OLD
 	invertDict = decrypter.invertedDict() #get inverted dict
 	
 	fileToDecrypt = getTextFilePath() #get file path
@@ -98,6 +129,7 @@ def decryptText(): #decrypt file
 def encryptTextArgs(inputFile, outputFile): #GUI encrypt
 	fileText = convertFileToText(inputFile) #file contents to string
 	fixedText = fixTextEncrypt(fileText) #convert comma and single quote
+	getUnencryptedChars(fixedText)
 	newText = plug1.translate(fixedText) #translate file
 	saveFilePath = outputFile #save file path from args
 	convertTextToFile(saveFilePath, newText) #save text to file
